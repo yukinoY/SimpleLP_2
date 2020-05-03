@@ -119,10 +119,9 @@ i {
 .c-section_content {
   margin-top: 48px;
 }
-.c-section-item_heading {
-  font-size: 2rem;
-}
 .c-section-item_title {
+  font-size: 2rem;
+
   font-weight: normal;
   margin-left: 6px;
 }
@@ -130,6 +129,7 @@ i {
   font-size: 1.6rem;
   line-height: 1.375;
   margin-top: 8px;
+  @include lineHeightCrop(1.375);
 }
 .c-section-item_img {
   width: 100%;
@@ -154,16 +154,24 @@ i {
 .c-form_textarea {
   width: 100%;
   margin-top: 8px;
-  font-size: 1.6em;
+  padding: 0 .4rem;
+  font-size: 1.6rem;
   border: 1px solid #707070;
   border-radius: 5px;
+}
+
+.c-form_input{
+  height: 24px;
+}
+.c-form_textarea {
+  height: 248px;
 }
 .c-button {
   width: 100%;
   border: 1px solid #707070;
   background-color: #eee;
-  font-size: 1.6em;
-  padding: 5px 0;
+  font-size: 1.6rem;
+  padding: 4px 0;
   border-radius: 5px;
 }
 /*----------------------------
@@ -243,6 +251,9 @@ i {
     & + .p-header-nav_item {
       margin-left: 24px;
     }
+    &:nth-of-type(6) {
+      margin-left: 20px;
+    }
   }
 }
 
@@ -274,8 +285,8 @@ i {
 }
 .p-header_nav {
   position: fixed;
-  top: 16px;
-  right: 16px;
+  top: 18px;
+  right: 32px;
 }
 .p-header-nav_item {
   font-size: 1.6rem;
@@ -300,7 +311,7 @@ i {
   }
 }
 .p-profile {
-  padding-top: 60px;
+  padding-top: 80px;
 }
 .p-profile_content {
   flex-direction: column;
@@ -312,10 +323,14 @@ i {
 .p-profile_img {
   text-align: center;
   img {
-    width: 350px;
+    width: 280px;
     height: 350px;
     object-fit: cover;
     object-position: center;
+    @include mq() {
+      width: 350px;
+      height: 350px;
+    }
   }
 }
 .p-profile_list {
@@ -327,14 +342,17 @@ i {
 }
 .p-profile_item {
   & + .p-profile_item {
-    margin-top: 40px;
+    margin-top: 50px;
   }
 }
 .p-profile-item_text {
+  font-size: 1.6rem;
+  line-height: 1.375;
+  @include lineHeightCrop(1.375);
   margin-top: 12px;
   & + .p-profile-item_text {
     margin: 0;
-    padding-top: 4px;
+    padding-top: 6px;
   }
 }
 .p-profile-item_twitter {
@@ -353,8 +371,11 @@ i {
 
 .p-works_list {
   justify-content: center;
-  gap: 46px 30px;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 48px 30px;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  @include mq() {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
   @include mq(xl) {
     grid-template-columns: repeat(auto-fit, max(350px));
   }
@@ -366,23 +387,38 @@ i {
 .p-blog_list {
   justify-content: center;
   gap: 46px 30px;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  @include mq() {
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  }
   @include mq(xl) {
     grid-template-columns: repeat(auto-fit, max(350px));
   }
+}
+.p-blog-item_text {
+  line-height: 1.6875;
+  @include lineHeightCrop(1.6875);
+}
+.p-blog_hr {
+  margin-top: 23px;
 }
 
 .p-services_list {
   text-align: center;
   justify-content: center;
   gap: 46px 60px;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  @include mq() {
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  }
   @include mq(xl) {
     grid-template-columns: repeat(auto-fit, max(320px));
   }
 }
 .p-services-item_text {
+  line-height: 1.6875;
   margin-top: 22px;
+  @include lineHeightCrop(1.6875)
 }
 
 .p-contact {
@@ -394,7 +430,7 @@ i {
   text-align: center;
 }
 .p-contact_button {
-  margin-top: 30px;
+  margin-top: 26px;
 }
 
 .p-footer {
@@ -414,7 +450,6 @@ i {
   }
 }
 .p-footer_text {
-  font-size: 1.6rem;
   margin-top: 29px;
   small {
     font-size: 1.6rem;
